@@ -1,44 +1,49 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card"
+import Comments from "../Comments/Comments"
+import { CommentType } from "@/types/comments/comment.types"
 
-export default function HomePage() {
+export default function HomePage({ data }: { data: { allComments
+: CommentType[], totalPages: number, total: number } }) {
+
     return (
-        <section className="relative flex min-h-screen items-center justify-center bg-linear-to-br from-[#f7ebeb] via-[#ffffff] slate-900 to-[[#ffffff]] text-white overflow-hidden">
-            <Card className="relative z-10 w-full max-w-3xl border-slate-800 bg-[#1e1d1d81] backdrop-blur">
-                <CardContent className="p-10 text-center space-y-6">
+        <section className="relative min-h-screen bg-linear-to-br from-orange-50 via-amber-50 to-rose-50 flex items-center justify-center px-4 py-10">
 
-                    <span className="inline-block rounded-full bg-cyan-500/10 px-4 py-1 text-sm text-cyan-400">
-                        Rakibul Comment Zone
-                    </span>
 
-                    <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
-                        Welcome to the{" "}
-                        <span className="bg-linear-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent">
-                            Retro Forum
+            <Card className="w-full max-w-4xl shadow-xl border border-black/5 bg-white/80 backdrop-blur-lg">
+                <CardContent className="p-6 sm:p-8 md:p-10 space-y-8">
+
+
+                    <div className="flex justify-center">
+                        <span className="inline-flex items-center rounded-full bg-orange-500/10 px-4 py-1 text-sm font-medium text-orange-600">
+                            Rakibul Comment Zone
                         </span>
-                    </h1>
+                    </div>
 
-                    <p className="text-slate-300 text-lg leading-relaxed">
-                        Share your thoughts, react to comments, and join meaningful
-                        discussions. Built with modern technologies for speed, security,
-                        and scalability.
-                    </p>
 
-                    <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
-                        <Button size="lg" className="bg-linear-to-r from-cyan-500 to-emerald-500 text-slate-950 hover:opacity-90">
-                            Create Comment
-                        </Button>
-                        <Button
-                            size="lg"
-                            variant="outline"
-                            className="border-slate-700 text-slate-200 hover:bg-slate-800"
-                        >
-                            View Comments
-                        </Button>
+                    <div className="text-center space-y-3">
+                        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900">
+                            Welcome to the{" "}
+                            <span className="bg-linear-to-r from-orange-500 to-blue-600 bg-clip-text text-transparent">
+                                Retro Forum
+                            </span>
+                        </h1>
+
+                        <p className="max-w-2xl mx-auto text-base sm:text-lg text-gray-600 leading-relaxed">
+                            Share your thoughts, react to comments, and join meaningful discussions.
+                            Built with modern technologies for speed, security, and scalability.
+                        </p>
+                    </div>
+
+
+                    <div className="border-t border-gray-200 pt-6">
+
+
+                        <Comments data={data} />
+
                     </div>
 
                 </CardContent>
             </Card>
         </section>
-    );
+    )
 }
