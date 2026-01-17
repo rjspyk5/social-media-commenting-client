@@ -11,7 +11,7 @@ export default async function Page({
   const limit = 2
 
   const res = await axios.get(
-    `http://localhost:3000/api/v1/comments`,
+    `${process.env.NEXT_PUBLIC_BASE_API}/comments`,
     {
       params: { page, limit }, headers: {
         'Cache-Control': 'no-store',
