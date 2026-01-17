@@ -6,16 +6,16 @@ export default async function Page({
 }: {
   searchParams: { page?: string }
 }) {
-  const page=(await searchParams).page || 1
+  const page = (await searchParams).page || 1
 
   const limit = 2
 
   const res = await axios.get(
     `http://localhost:3000/api/v1/comments`,
     {
-      params: { page, limit },    headers: {
-      'Cache-Control': 'no-store',
-    },
+      params: { page, limit }, headers: {
+        'Cache-Control': 'no-store',
+      },
     },
 
 
