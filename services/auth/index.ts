@@ -1,5 +1,6 @@
 'use server'
 
+import { UserType } from "@/types/auth/user.types";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import { cookies } from "next/headers";
@@ -28,14 +29,14 @@ export const login = async (
       `${process.env.NEXT_PUBLIC_BASE_API}/auth/login`,
       payload
     );
-
+console.log(res);
     const data = res.data;
 
-    // ✅ trust backend success flag ONLY
-    if (data?.success === true && data?.token) {
+
+    if (data?.success === true && data?.data) {
       (await cookies()).set({
         name: "accesstoken",
-        value: data.token,
+        value: data.data,
         httpOnly: true,
         secure: true,
         path: "/",
@@ -75,8 +76,8 @@ export const logOut = async () => {
 export const getUser = async () => {
     const token = ((await cookies()).get("accesstoken"))?.value;
     if (!token) return null;
-    const { name } = jwtDecode(token);
-    return { name };
+    const { email,name,id } = jwtDecode<UserType>(token);
+    return { email,name,id };
 }
 
 export const createUser = async (
