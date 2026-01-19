@@ -29,10 +29,7 @@ export const login = async (
       `${process.env.NEXT_PUBLIC_BASE_API}/auth/login`,
       payload
     );
-console.log(res);
     const data = res.data;
-
-
     if (data?.success === true && data?.data) {
       (await cookies()).set({
         name: "accesstoken",
@@ -72,7 +69,6 @@ export const logOut = async () => {
     redirect("/login");
 
 }
-
 export const getUser = async () => {
     const token = ((await cookies()).get("accesstoken"))?.value;
     if (!token) return null;
@@ -90,8 +86,6 @@ export const createUser = async (
     );
 
     const data = res.data;
-
-    // ✅ ONLY trust backend success flag
     if (data?.success === true) {
       return {
         success: true,
@@ -104,7 +98,6 @@ export const createUser = async (
       message: data?.message || "Registration failed",
     };
   } catch (error: any) {
-    // 🔥 Handle axios/network/backend errors safely
     if (error.response?.data) {
       return {
         success: false,

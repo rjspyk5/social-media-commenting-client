@@ -13,6 +13,7 @@ import { Input } from "@/components/ui/input";
 import { createUser } from "@/services/auth";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 interface RegistrationFormValues {
   name: string;
@@ -131,6 +132,15 @@ export const Registration = () => {
           >
             {isSubmitting ? "Creating account..." : "Register"}
           </Button>
+          <p className="text-center text-sm text-muted-foreground">
+  Already have an account?{" "}
+  <Link
+    href="/login"
+    className="font-medium text-primary hover:underline"
+  >
+    Login
+  </Link>
+</p>
         </form>
       </CardContent>
     </Card>

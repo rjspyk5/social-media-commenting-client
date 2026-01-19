@@ -3,9 +3,9 @@ import React from 'react';
 
 const page = () => {
     return (
-        <div>
-            <Login/>
-        </div>
+         <div className='min-h-screen flex justify-center items-center'>
+      <Login/>
+         </div>
     );
 };
 

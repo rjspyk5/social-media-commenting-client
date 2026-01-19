@@ -4,7 +4,7 @@ import React from 'react';
 
 const page = () => {
     return (
-        <div>
+        <div className='min-h-screen flex justify-center items-center'>
            <Registration/>
         </div>
     );

@@ -13,6 +13,7 @@ import { Input } from "@/components/ui/input";
 import { login } from "@/services/auth";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 interface LoginFormValues {
   email: string;
@@ -108,6 +109,15 @@ export const Login = () => {
           >
             {isSubmitting ? "Loading..." : "Login"}
           </Button>
+          <p className="text-center text-sm text-muted-foreground">
+  Don’t have an account?{" "}
+  <Link
+    href="/reg"
+    className="font-medium text-primary hover:underline"
+  >
+    Register
+  </Link>
+</p>
         </form>
       </CardContent>
     </Card>
