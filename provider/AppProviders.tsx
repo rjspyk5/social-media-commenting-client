@@ -31,7 +31,7 @@ const AppProvider = ({ children, initialUser }: { children: React.ReactNode, ini
 
     // }
     if (initialUser) {
-        dispatch(setUser({ user: initialUser || null }));
+        dispatch(setUser(initialUser || null ));
     }
     return (<>{children}</>);
 };

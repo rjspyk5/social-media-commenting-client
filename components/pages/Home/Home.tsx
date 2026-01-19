@@ -6,13 +6,17 @@ import { Button } from "@/components/ui/button"
 import { logOut } from "@/services/auth"
 import { useAppSelector } from "@/redux/hooks"
 
-export default function HomePage({ data }: { data: { allComments
-: CommentType[], totalPages: number, total: number } }) {
-        const user = useAppSelector(state => state.auth.user)
+export default function HomePage({ data }: {
+    data: {
+        allComments
+        : CommentType[], totalPages: number, total: number
+    }
+}) {
+    const user = useAppSelector(state => state.auth.user)
 
     return (
         <section className="relative min-h-screen bg-linear-to-br from-orange-50 via-amber-50 to-rose-50 flex items-center justify-center px-4 py-10">
-        {user &&     <Button onClick={()=>logOut()}  className="fixed right-2 top-5 bg-red-500 hover:bg-red-600 hover:cursor-pointer">Logout</Button>}
+            {user && <Button onClick={() => logOut()} className="fixed right-2 top-5 bg-red-500 hover:bg-red-600 hover:cursor-pointer">Logout</Button>}
 
 
             <Card className="w-full max-w-4xl shadow-xl border border-black/5 bg-white/80 backdrop-blur-lg">
